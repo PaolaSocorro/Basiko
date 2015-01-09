@@ -1,0 +1,210 @@
+<!--
+
+
+
+-->
+<!doctype html>
+<html lang= "en">
+    <head>
+        <title>{block:PostSummary}{PostSummary}|{/block:PostSummary}{Title}</title>
+        <link rel="shortcut icon" href="{Favicon}">
+        <link rel="alternate" type="application/rss+xml" href="{RSS}">
+        <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Bree+Serif' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="http://static.tumblr.com/hznqxps/ivOmgjf8v/normalize.css" />
+        
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+        
+        {block:Description}
+            <meta name="description" content="{MetaDescription}" />
+        {/block:Description}
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+              
+        <!--Colors--> 
+        
+        <meta name="color:Header Main Color" content="#2E2E2E"/>
+        <meta name="color:Background Color" content="#F2F5FA"/>
+        <meta name="color:Text Color" content="#649801"/>
+      
+        <!--Size-->
+        <meta name="text:Column Size" content="800"/>
+        
+        <!--Other-->
+        
+        
+        <!--Fonts-->
+        
+        <meta name="font:Headings" content="font-family: 'Lato', sans-serif"/>
+        <meta name="font:Subheadings" content="font-family: 'Lato', sans-serif"/>
+        <meta name="font:Body" content="font-family: 'Lato', sans-serif"/>
+        <meta name="font:Title" content="font-family: 'Bree Serif', serif"/>
+        
+        <style>
+        a {
+            text-decoration: none;   
+            color: {color:Header Main Color};
+        }
+        a:hover{
+            color: {color:Text Color};
+        }
+        .postMain #postTitle:hover{
+           color: {color:Text Color};
+       }
+        
+        </style>
+        
+        
+    </head>
+    
+    <!--STYLE-->
+    <style>
+        
+        .topHeader{
+            height:300px;
+            width: 100vw;
+            background: {color:Header Main Color};
+            margin-top:-30px;
+            position: absolute;
+            z-index: 1;
+        }
+        
+        #title{
+            text-align: center;
+            padding:40px;
+            color: {color:Text Color};
+            font-size:4em;
+        }
+        .description{
+            height: 200px;
+            width: 100vw;
+            color: {color:Text Color};
+            text-align: center;
+            position: absolute;
+            margin-top:130px;
+            font-size: 1.2em;
+            z-index: 2;
+        }
+
+        h1,h2,h3,h4,h5,h6{
+            font-family: {font:Headings};!important   
+        }
+        .postMain{
+            width:{text:Column Size}px;
+            position: absolute;
+            margin-top: 320px;
+            font-size:1.1em;
+            z-index: -1;
+            
+        }
+        .posts{
+            padding: 0;
+            margin: 0;
+        }
+        
+    </style>
+    <body>
+        
+        <header id="masthead">
+            <div class="topHeader">  
+                <h1 id="title">{Title}</h1>
+            </div>
+            
+        </header>
+        
+
+        {block:Description}
+        <div class ="description"> {Description} </div>
+        {/block:Description}
+
+        <ol style="list-style:none;" id="posts">
+          <div class="postMain"
+            {block:Posts}{block:Text}
+                    <li class="post text">
+                        {block:Title}
+                            <h1><a id="postTitle" href="{Permalink}">{Title}</a></h1>
+                        {/block:Title}{Body}
+                    </li>
+                {/block:Text}{block:Photo}
+                    <li class="post photo">
+                        <img src="{PhotoURL-500}" alt="{PhotoAlt}"/>
+
+                        {block:Caption}
+                            <div class="caption">{Caption}</div>
+                        {/block:Caption}
+                    </li>
+                {/block:Photo}{block:Panorama}
+                    <li class="post panorama">
+                        {LinkOpenTag}
+                            <img src="{PhotoURL-Panorama}" alt="{PhotoAlt}"/>
+                        {LinkCloseTag}{block:Caption}
+                            <div class="caption">{Caption}</div>
+                        {/block:Caption}
+                    </li>
+                {/block:Panorama}{block:Photoset}
+                    <li class="post photoset">
+                        {Photoset-500}{block:Caption}
+                            <div class="caption">{Caption}</div>
+                        {/block:Caption}
+                    </li>
+                {/block:Photoset}{block:Quote}
+                    <li class="post quote">
+                        "{Quote}"
+
+                        {block:Source}
+                            <div class="source">{Source}</div>
+                        {/block:Source}
+                    </li>
+                {/block:Quote}{block:Link}
+                    <li class="post link">
+                        <a href="{URL}" class="link" {Target}>{Name}</a>
+
+                        {block:Description}
+                            <div class="description">{Description}</div>
+                        {/block:Description}
+                    </li>
+                {/block:Link}{block:Chat}
+                    <li class="post chat">
+                        {block:Title}
+                            <h2><a href="{Permalink}">{Title}</a></h2>
+                        {/block:Title}
+
+                        <ul class="chat">
+                            {block:Lines}
+                                <li class="{Alt} user_{UserNumber}">
+                                    {block:Label}
+                                        <span class="label">{Label}</span>
+                                    {/block:Label}{Line}
+                                </li>
+                            {/block:Lines}
+                        </ul>
+                    </li>
+                {/block:Chat}{block:Video}
+                    <li class="post video">
+                        {Video-500}{block:Caption}
+                            <div class="caption">{Caption}</div>
+                        {/block:Caption}
+                    </li>
+                {/block:Video}{block:Audio}
+                    <li class="post audio">
+                        {AudioEmbed}{block:Caption}
+                            <div class="caption">{Caption}</div>
+                        {/block:Caption}
+                    </li>
+                {/block:Audio}{/block:Posts}
+            </div>
+        </ol>
+
+        
+        
+        <p id="footer">
+            {block:PreviousPage}
+                <a href="{PreviousPage}">&#171; Previous</a>
+            {/block:PreviousPage}{block:NextPage}
+                <a href="{NextPage}">Next &#187;</a>
+            {/block:NextPage}
+
+            <a href="/archive">Archive</a>
+        </p>
+    </body>
+</html>
