@@ -11,6 +11,7 @@
         <link rel="alternate" type="application/rss+xml" href="{RSS}">
         <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Bree+Serif' rel='stylesheet' type='text/css'>
+        
         <link rel="stylesheet" href="http://static.tumblr.com/hznqxps/ivOmgjf8v/normalize.css" />
         
         <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -21,7 +22,7 @@
         
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
               
-        <!--Colors--> 
+        <!--Colors--> !
         
         <meta name="color:Header Main Color" content="#2E2E2E"/>
         <meta name="color:Background Color" content="#F2F5FA"/>
@@ -101,6 +102,12 @@
             padding: 0;
             margin: 0;
         }
+        .wrapper{
+            margin-left: auto;
+            margin-right: auto;
+            width: 100%;
+        }
+        
         
     </style>
     <body>
@@ -112,7 +119,7 @@
             
         </header>
         
-
+    <div class="wrapper">  
         {block:Description}
         <div class ="description"> {Description} </div>
         {/block:Description}
@@ -195,7 +202,7 @@
             </div>
         </ol>
 
-        
+    </div>      
         
         <p id="footer">
             {block:PreviousPage}
