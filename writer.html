@@ -138,14 +138,15 @@
             margin-right:50px;
             margin-left:-40px;
         }
+        .fa fa-tag{color:red;} <!--Doesnt work-->
         #notes {
             font-family: {font:Headings};
             font-size:0.9em;
-            background: rgba(0,0,0,0.3);
-            border-radius:3px;
+           <!-- background: rgba(0,0,0,0.3);
+            border-radius:3px;-->
             
         }
-        #notes li{list-style:none;margin-left:-30px; }
+        #notes li{list-style:none;margin-left:-30px;margin-top:10px; }
         #notes img.avatar{
             border-radius: 50%; 
             margin-right:20px;
@@ -355,7 +356,7 @@
                        {block:NoteCount}<li><i class="fa fa-heart-o"></i> <a class="notecount" href="{Permalink}#notes">{NoteCountWithLabel}</a></li>{/block:NoteCount}
                 
                 {block:ContentSource}
-                <li><a href="{SourceURL}">{lang:Source}:{block:NoSourceLogo}{SourceTitle}{/block:NoSourceLogo}
+                <li><i class="fa fa-compass"></i> <a href="{SourceURL}">{lang:Source}:{block:NoSourceLogo}{SourceTitle}{/block:NoSourceLogo}
                
                   {block:SourceLogo}<img src="{BlackLogoURL}" width="{LogoWidth}"height="{LogoHeight}" alt="{SourceTitle}" />{/block:SourceLogo}</a></li>
                 {/block:ContentSource} 
@@ -365,8 +366,9 @@
                     
                     {block:PermalinkPage}
                     {block:HasTags}
+                    
                     <ul class="tags">
-                    {block:Tags}<li><a href="{TagURL}">{Tag}</a> </li>{/block:Tags}
+                    {block:Tags}<li><i class="fa fa-tag"></i> <a href="{TagURL}">{Tag}</a> </li>{/block:Tags}
                     </ul>
                     {/block:HasTags}
                     
