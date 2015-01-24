@@ -7,6 +7,8 @@
 <html lang= "en">
     <head>
         <title>{block:PostSummary}{PostSummary}|{/block:PostSummary}{Title}</title>
+        {block:Description}<div class ="description"> {Description} </div>{/block:Description}
+        
         <link rel="shortcut icon" href="{Favicon}">
         <link rel="alternate" type="application/rss+xml" href="{RSS}">
         <link rel="stylesheet" href="http://static.tumblr.com/hznqxps/ivOmgjf8v/normalize.css" />
@@ -58,7 +60,7 @@
     <style type="text/css">
         
         .topHeader{
-            height:300px;
+            height:260px;
             width: 100vw;
             background: {color:Header Main Color};
             margin-top:-30px;
@@ -67,10 +69,10 @@
         }
         .menu ul{
             position:absolute;
-            margin-top:260px;
+            margin-top:230px;
             padding:10px;
             width:100vw;
-            background:#434343;  <!--fix this to use meta tag? Menu cOLOR-->
+            background: rgba(0,0,0,0.5);  <!--fix this to use meta tag? Menu cOLOR-->
             display:inline;
             text-align:center;
             z-index:5;
@@ -104,29 +106,55 @@
         }
         #posts{
             max-width:750px;
-            padding-top:320px;
+            padding-top:220px;
             padding-left: 0px;
             margin:0 auto;
             font-family: {font:PostText};
-            font-size:1.1em;
+            font-size:1em;
             z-index: 1;
             
         }
-        
+        #footer{
+            width:800px;
+            font-family: {font:PostText};
+            font-size:0.9em;
+            margin:0 auto;
+            background: rgba(0,0,0,0.5);
+            border-radius:3px;
+            text-align:center;
+            padding:0px,20px,0px,20px;
+         
+        } 
+        .postSpace{
+            height:100px;   
+        }
+        .index li,.tags li{
+            display:inline-block;
+            padding: 0px 10px 0px 10px; 
+            font-family: {font:Headings};
+            font-size:0.9em;
+            background: rgba(0,0,0,0.3);
+            border-radius:3px;
+            margin-right:50px;
+            margin-left:-40px;
+        }
+
         
     </style>
     <body>
         <div class="wrapper"> 
         
             <header id="masthead">
-                <div class="topHeader">  
-                    <h1 id="title"><a href="{Permalink}">{Title}</h1>
+                <div class="topHeader">
+                   <!-- <img src="{PortraitURL-128}"/> -->
+                    <!--ADD CSS TO PORTRAIT -->
+                    <h1 id="title"><a href="{BlogURL}">{Title}</a></h1> <!--fix this to link to home page-->
                 </div>
                 
                 <div class="menu">
                     <nav>
                         <ul id="topMenu">
-                            <li><a href="{BlogURL}">Home</a></li>
+                            <li><a href="{BlogURL}">{lang:Home}</a></li>
                             {block:HasPages}
                             {block:Pages}
                             <li> <a href="{URL}">{Label}</a></li>
@@ -145,19 +173,30 @@
                 </div>
 
             </header>
-
+<!================================================
+                        SIDEBAR 
+==================================================>
+            
+            <aside id="sidebar">
+    <div class="item">
+        <h2>Sidebar item</h2>
+        <p>We'll add HTML to our sidebar later.</p>
+    </div>
+</aside>
+            
+            
   
-            {block:Description}
-            <div class ="description"> {Description} </div>
-            {/block:Description}
-
-            <ol style="list-style:none;" id="posts">
-                  
-                {block:Posts}
+            
+            
 <!================================================
                         TEXT
 ==================================================>
+            
+            
+            <ol style="list-style:none;" id="posts">
                   
+                {block:Posts}
+                 <article>  
                    {block:Text}
                         <li class="post text">
                             {block:Title}
@@ -259,37 +298,116 @@
                                 <div class="caption">{Caption}</div>
                             {/block:Caption}
                         </li>
-                    {/block:Video
+                    {/block:Video}
 <!================================================
                         AUDIO
 ==================================================>
                               
-                    }{block:Audio}
+                    {block:Audio}
                         <li class="post audio">
                             {AudioEmbed}{block:Caption}
                                 <div class="caption">{Caption}</div>
                             {/block:Caption}
                         </li>
                     {/block:Audio}
+                     
+  <!================================================
+                        ANSWER
+==================================================>               
+                {block:Answer}
+                    <li class="post answer">
+                        {block:Title}
+                         <h2><a href="{Permalink}">{Question}</a></h2>
+                        
+                        {/block:Title}
+                        <div class="user"><img src="{AskerPortraitURL-96}"/><p>{Asker}</p></div>
+            {Answer}
+                    </li> 
+                {/block:Answer}                    
+                 
+<!================================================
+                        FOOTER
+==================================================>  
+                {block:Date} 
+                <li class="post date"> 
+                <footer class="metadata">
+                   <ul class="index">
+                       <li> <a href="{Permalink}"> <time datetime="{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero}">{DayOfMonth} {Month} {Year} </time></a></li> 
+                       {block:NoteCount}<li><a class="notecount" href="{Permalink}#notes">{NoteCountWithLabel}</a></li>{/block:NoteCount}
+                
+                {block:ContentSource}
+                <li><a href="{SourceURL}">{lang:Source}:{block:NoSourceLogo}{SourceTitle}{/block:NoSourceLogo}
+               
+                  {block:SourceLogo}<img src="{BlackLogoURL}" width="{LogoWidth}"height="{LogoHeight}" alt="{SourceTitle}" />{/block:SourceLogo}</a></li>
+                {/block:ContentSource} 
+                     
+                    </ul>  
+                    {block:PermalinkPage}
+                    {block:HasTags}
+                    <ul class="tags">
+                    {block:Tags}<li><a href="{TagURL}">{Tag}</a> </li>{/block:Tags}
+                    </ul>
+                    {/block:HasTags}
+
+                    {block:PostNotes}
+                    <div id="notes">
+                        {PostNotes}
+                    </div>
+                    {/block:PostNotes} 
+                    {/block:PermalinkPage} 
+                    
+                    
+                    
+                </footer>
+                </li>
+                {/block:Date}
+                     
+                </article>
+            {/block:Posts}
+            {block:PermalinkPage}
+            {block:HasTags}
+            <ul class="tags">
+                {block:Tags}<li><a href="{TagURL}">{Tag}</a> </li>{/block:Tags}
+            </ul>
+            {/block:HasTags}
             
-                {/block:Posts}
+            {block:PostNotes}
+            <div id="notes">
+                {PostNotes}
+            </div>
+            {/block:PostNotes} 
+            {/block:PermalinkPage} 
+                              
               
             </ol>
+            
+    {block:Pagination}
+    <nav id="pagination">
+        <ul>
+            {block:NextPage}<li><a href="{NextPage}">Next page</a></li>{/block:NextPage}
+            {block:PreviousPage}<li><a href="{PreviousPage}">Previous page</a></li>{/block:PreviousPage}
+        </ul>
+    </nav>
+    {/block:Pagination}
 
+<div class="postSpace"</div> <!--space-->
     </div>      
         
 <!================================================
                         FOOTER
 ==================================================>
-                  
-        <p id="footer">
+<div class="postSpace"</div> <!--space-->
+
+  <div id="footer">
             {block:PreviousPage}
                 <a href="{PreviousPage}">&#171; Previous</a>
-            {/block:PreviousPage}{block:NextPage}
+            {/block:PreviousPage}
+            <a href="/archive">Archive</a>
+            {block:NextPage}
                 <a href="{NextPage}">Next &#187;</a>
             {/block:NextPage}
 
-            <a href="/archive">Archive</a>
-        </p>
+
+ </div>        
     </body>
 </html>
