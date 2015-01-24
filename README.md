@@ -16,6 +16,6 @@ A simple theme to make reading large posts or stories on tumblr enjoyable.
 - animate sidebar...top down? 
 - hover states for menu?
 - Read more button on text posts
-- font awesome icons
+- font awesome icons 
 - figure out custom fonts!! damn. 
 

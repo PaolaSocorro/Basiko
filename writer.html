@@ -125,9 +125,9 @@
             padding:0px,20px,0px,20px;
          
         } 
-        .postSpace{
-            height:100px;   
-        }
+        .postSpace{height:50px;   }
+        .littleSpace{ height:10px;}
+        .readMore{text-transform: uppercase;}
         .index li,.tags li{
             display:inline-block;
             padding: 0px 10px 0px 10px; 
@@ -138,12 +138,27 @@
             margin-right:50px;
             margin-left:-40px;
         }
+        #notes {
+            font-family: {font:Headings};
+            font-size:0.9em;
+            background: rgba(0,0,0,0.3);
+            border-radius:3px;
+            
+        }
+        #notes li{list-style:none;margin-left:-30px; }
+        #notes img.avatar{
+            border-radius: 50%; 
+            margin-right:20px;
+           
 
+        }
         
     </style>
     <body>
         <div class="wrapper"> 
         
+            
+            
             <header id="masthead">
                 <div class="topHeader">
                    <!-- <img src="{PortraitURL-128}"/> -->
@@ -202,7 +217,11 @@
                             {block:Title}
                                 <h1><a id="postTitle" href="{Permalink}">{Title}</a></h1>
                             {/block:Title}{Body}
+                          
+                            {block:More}<i class="fa fa-newspaper-o"> </i> <a class="readMore" href="{Permalink}"><strong>{lang:READ MORE}</strong></a>{/block:More}
+                             <div class="littleSpace"</div> <!--space-->
                         </li>
+                
                     {/block:Text}
 <!================================================
                         PHOTO
@@ -332,8 +351,8 @@
                 <li class="post date"> 
                 <footer class="metadata">
                    <ul class="index">
-                       <li> <a href="{Permalink}"> <time datetime="{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero}">{DayOfMonth} {Month} {Year} </time></a></li> 
-                       {block:NoteCount}<li><a class="notecount" href="{Permalink}#notes">{NoteCountWithLabel}</a></li>{/block:NoteCount}
+                       <li> <i class="fa fa-clock-o"></i> <a href="{Permalink}"> <time datetime="{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero}">{DayOfMonth} {Month} {Year} </time></a></li> 
+                       {block:NoteCount}<li><i class="fa fa-heart-o"></i> <a class="notecount" href="{Permalink}#notes">{NoteCountWithLabel}</a></li>{/block:NoteCount}
                 
                 {block:ContentSource}
                 <li><a href="{SourceURL}">{lang:Source}:{block:NoSourceLogo}{SourceTitle}{/block:NoSourceLogo}
@@ -342,13 +361,15 @@
                 {/block:ContentSource} 
                      
                     </ul>  
+                    
+                    
                     {block:PermalinkPage}
                     {block:HasTags}
                     <ul class="tags">
                     {block:Tags}<li><a href="{TagURL}">{Tag}</a> </li>{/block:Tags}
                     </ul>
                     {/block:HasTags}
-
+                    
                     {block:PostNotes}
                     <div id="notes">
                         {PostNotes}
@@ -361,23 +382,11 @@
                 </footer>
                 </li>
                 {/block:Date}
-                     
+                 <div class="postSpace"</div> <!--space-->    
                 </article>
-            {/block:Posts}
-            {block:PermalinkPage}
-            {block:HasTags}
-            <ul class="tags">
-                {block:Tags}<li><a href="{TagURL}">{Tag}</a> </li>{/block:Tags}
-            </ul>
-            {/block:HasTags}
-            
-            {block:PostNotes}
-            <div id="notes">
-                {PostNotes}
-            </div>
-            {/block:PostNotes} 
-            {/block:PermalinkPage} 
-                              
+    {/block:Posts}
+                
+                                             
               
             </ol>
             
