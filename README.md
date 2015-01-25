@@ -1,4 +1,4 @@
-Writer
+Basiko
 ======
 Very first tumblr theme. 
 A simple theme to make reading large posts or stories on tumblr enjoyable. 
